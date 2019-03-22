@@ -1,4 +1,4 @@
-# Doctor Lookup
+# Seek
 
 #### By **Robbie Kruszynski**
 
