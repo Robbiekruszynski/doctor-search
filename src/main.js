@@ -74,10 +74,10 @@ $(document).ready(function() {
           let pic = index.profile.image_url;
           $(".printInfo").append("<img src='" + pic + "'>");
         }
-        if(!names){
-          $(".printInfo").append("<p>Sorry there is no information on that</p>");
-        }
       })
+      if(!names){
+        $(".printInfo").append("<p>Sorry there is no doctor with that name</p>");
+      }
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
