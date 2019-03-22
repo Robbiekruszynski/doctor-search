@@ -13,9 +13,9 @@ An application that allows a user to input their medical issue and view a list o
 | Behavior | Input | Output |
 |----------|-------|--------|
 * Behavior
-* User inputs "family"
+* User inputs "family" clicks Search condition
 * ![application example](src/assets/images/screen.png)
-* User inputs "family"
+* User inputs "John" clicks Search Doctor
 * ![application example](src/assets/images/screen2.png)
 
 
