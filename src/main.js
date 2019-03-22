@@ -8,7 +8,7 @@ $(document).ready(function() {
   $(".callDoctor").click(function() {
     let newApi = new grabApi();
     let input = $("#issue").val();
-    // let nameInput = $("#name").val();
+    let docs = false;
     let promise = newApi.runDoctor();
 
     promise.then(function(response) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
       body.data.forEach(function(index){
         for (let i = 0; i < index.specialties.length; i++) {
          if (index.specialties[i].description.match(input)) {
-
+           docs = true;
            let firstName = index.profile.first_name;
            $(".printInfo").append("<p> First Name: " + firstName + "</p>");
 
@@ -36,13 +36,12 @@ $(document).ready(function() {
 
            break;
 
-         } else  {
-           $(".printInfo").append("<p>Sorry, there is no current data or Doctor for that search</p>");
-           
-          break;
          }
        }
      });
+     if(!docs){
+       $(".printInfo").append("<p>Sorry there is no information on that</p>");
+     }
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     })
@@ -50,12 +49,16 @@ $(document).ready(function() {
 
   $(".callName").click(function() {
     let newApi = new grabApi();
-    let promise = newApi.runDoctor();
     let nameInput = $("#name").val();
+    let names = false;
+    let promise = newApi.runDoctor();
+
+
     promise.then(function(response) {
       let body = JSON.parse(response);
       body.data.forEach(function(index){
         if(index.profile.bio.match(nameInput)){
+           names = true;
           let firstName = index.profile.first_name;
           $(".printInfo").append("<p> First Name: " + firstName + "</p>");
 
@@ -71,9 +74,9 @@ $(document).ready(function() {
           let pic = index.profile.image_url;
           $(".printInfo").append("<img src='" + pic + "'>");
         }
-        // if(index.profile.bio.!match(nameInput)) {
-        //     $(".printInfo").append("<img src='" + pic + "'>");
-        // }
+        if(!names){
+          $(".printInfo").append("<p>Sorry there is no information on that</p>");
+        }
       })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
