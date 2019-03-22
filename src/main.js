@@ -36,8 +36,10 @@ $(document).ready(function() {
 
            break;
 
-         } else {
+         } else  {
            $(".printInfo").append("<p>Sorry, there is no current data or Doctor for that search</p>");
+           
+          break;
          }
        }
      });
@@ -69,6 +71,9 @@ $(document).ready(function() {
           let pic = index.profile.image_url;
           $(".printInfo").append("<img src='" + pic + "'>");
         }
+        // if(index.profile.bio.!match(nameInput)) {
+        //     $(".printInfo").append("<img src='" + pic + "'>");
+        // }
       })
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
