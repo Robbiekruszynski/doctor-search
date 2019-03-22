@@ -20,6 +20,12 @@ $(document).ready(function() {
         for (let i = 0; i < index.specialties.length; i++) {
          if (index.specialties[i].description.match(input)) {
            docs = true;
+           const pic = index.profile.image_url;
+           $(".printInfo").append("<img src='" + pic + "'>");
+
+           const newPat = index.practices[0].accepts_new_patients;
+           $(".printInfo").append("<p> Accepting patients: " + newPat + "</p>");
+
            const firstName = index.profile.first_name;
            $(".printInfo").append("<p> First Name: " + firstName + "</p>");
 
@@ -32,17 +38,14 @@ $(document).ready(function() {
            const gender = index.profile.gender;
            $(".printInfo").append("<p> gender: " + gender + "</p>");
 
-           const pic = index.profile.image_url;
-           $(".printInfo").append("<img src='" + pic + "'>");
-
-           const newPat = index.practices[0].accepts_new_patients;
-           $(".printInfo").append("<p> Accepting patients: " + newPat + "</p>");
-
            const newAdd = index.practices[0].visit_address.street;
            $(".printInfo").append("<p> Street address: " + newAdd + " Portland, Or</p>");
 
+           const newPhone = index.practices[0].phones[0].number;
+           $(".printInfo").append("<p> Phone number: " + newPhone + "</p>");
+
             const showSite = index.practices[0].website ? ` or at <a href=' ${index.practices[0].website}'>their website</a>` : ``;
-            // $(".printInfo").append("<p> website: " + newWeb + "</p>");
+            $(".printInfo").append("<p> website: " + showSite + "</p>");
 
            break;
 
@@ -69,20 +72,33 @@ $(document).ready(function() {
       body.data.forEach(function(index){
         if(index.profile.bio.match(nameInput)){
            names = true;
-          const firstName = index.profile.first_name;
-          $(".printInfo").append("<p> First Name: " + firstName + "</p>");
+           const pic = index.profile.image_url;
+           $(".printInfo").append("<img src='" + pic + "'>");
 
-          const lastName = index.profile.last_name;
-          $(".printInfo").append("<p> Last Name: " + lastName + "</p>");
+           const newPat = index.practices[0].accepts_new_patients;
+           $(".printInfo").append("<p> Accepting patients: " + newPat + "</p>");
 
-          const bio = index.profile.bio;
-          $(".printInfo").append("<p> Bio: " + bio + "</p>");
+           const firstName = index.profile.first_name;
+           $(".printInfo").append("<p> First Name: " + firstName + "</p>");
 
-          const gender = index.profile.gender;
-          $(".printInfo").append("<p> gender: " + gender + "</p>");
+           const lastName = index.profile.last_name;
+           $(".printInfo").append("<p> Last Name: " + lastName + "</p>");
 
-          const pic = index.profile.image_url;
-          $(".printInfo").append("<img src='" + pic + "'>");
+           const bio = index.profile.bio;
+           $(".printInfo").append("<p> Bio: " + bio + "</p>");
+
+           const gender = index.profile.gender;
+           $(".printInfo").append("<p> gender: " + gender + "</p>");
+
+           const newAdd = index.practices[0].visit_address.street;
+           $(".printInfo").append("<p> Street address: " + newAdd + " Portland, Or</p>");
+
+           const newPhone = index.practices[0].phones[0].number;
+           $(".printInfo").append("<p> Phone number: " + newPhone + "</p>");
+
+           const showSite = index.practices[0].website ? `<a href=' ${index.practices[0].website}'></a>` : ``;
+           $(".printInfo").append("<p>" + showSite + "</p>");
+
         }
       })
       if(!names){

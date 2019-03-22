@@ -1,5 +1,5 @@
 body {
-  background-color: #8db5b2;
+  background-color: #e3e1df;
 }
 
 .jumbotron {
@@ -7,4 +7,9 @@ body {
 }
 h1 {
   color: black;
+}
+
+.jumbotron{
+  background-image: url(../assets/images/tryout.gif);
+  background-size: contain;
 }
