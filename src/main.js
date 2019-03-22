@@ -4,7 +4,7 @@ import 'bootstrap/scss/bootstrap.scss';
 import './sass/styles.scss';
 import { grabApi } from "../src/api.js";
 
-$(document).ready(function(check) {
+$(document).ready(function() {
   $(".callDoctor").click(function() {
     $(".printInfo").empty(); //new
     const newApi = new grabApi();
@@ -12,14 +12,13 @@ $(document).ready(function(check) {
     let docs = false;
     const promise = newApi.runDoctor();
 
-
     promise.then(function(response) {
       const body = JSON.parse(response);
+      // const newObject = body.data;
       console.log(body);
       body.data.forEach(function(index){
         for (let i = 0; i < index.specialties.length; i++) {
-          const checkInfo = [index.specialties[i].description, index.profile.last_name];
-         if (checkInfo[check].match(input)) {
+         if (index.specialties[i].description.match(input)) {
            docs = true;
            const firstName = index.profile.first_name;
            $(".printInfo").append("<p> First Name: " + firstName + "</p>");
@@ -36,13 +35,15 @@ $(document).ready(function(check) {
            const pic = index.profile.image_url;
            $(".printInfo").append("<img src='" + pic + "'>");
 
-           const visit = index.practices[0];
-           const profile = index.profile;
+           const newPat = index.practices[0].accepts_new_patients;
+           $(".printInfo").append("<p> Accepting patients: " + newPat + "</p>");
 
-           const viewWebsite = visit.website ? `<a href=' ${visit.website}'>website</a>` : ``;
+           const newAdd = index.practices[0].visit_address.street;
+           $(".printInfo").append("<p> Street address: " + newAdd + " Portland, Or</p>");
 
-           const newPatients = visit.accepts_new_patients ? "" : "not ";
-           $(".printInfo").append(`<p>Dr. ${profile.last_name} is ${newPatients} available to see new patients accepted.</p>`);
+           const newWeb = index.practices[0].website;
+            $(".printInfo").append("<p> website: " + newWeb + "</p>");
+
            break;
 
          }
