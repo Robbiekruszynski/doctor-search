@@ -15,6 +15,9 @@ An application that allows a user to input their medical issue and view a list o
 * Behavior
 * User inputs "family"
 * ![application example](src/assets/images/screen.png)
+* User inputs "family"
+* ![application example](src/assets/images/screen2.png)
+
 
 
 ### Setup/Installation Requirements
