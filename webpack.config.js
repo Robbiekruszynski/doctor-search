@@ -18,7 +18,7 @@ module.exports = {
     new Dotenv(),
     new UglifyJsPlugin({ sourceMap: true }),
     new HtmlWebpackPlugin({
-      title: 'webpack-template-v5',
+      title: 'doctor-call',
       template: './src/index.html',
       inject: false
     }),

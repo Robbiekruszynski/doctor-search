@@ -2,18 +2,29 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/scss/bootstrap.scss';
 import './sass/styles.scss';
-import { apiCall } from "./../src/business-logic.js";
+import { grabApi } from "../src/api.js";
 
 $(document).ready(function() {
-  $(".callApi").click(function() {
-    let freshApi = new apiCall();
-    let promise = freshApi.runDoctor();
+  $(".callOnApi").click(function() {
+    let newApi = new grabApi();
+    let promise = newApi.runDoctor();
 
     promise.then(function(response) {
       let body = JSON.parse(response);
+      const newObject = body.data;
       console.log(body);
-      $('.output').html(body[0].owner[1]);
-      console.log(body[19]);
+      let input = $("#").val();
+      body.data.forEach(function(index){
+        for (let i = 0; i < index.specialties.length; i++) {
+         if (index.specialties[i].description.match(input)) {
+           let bio = index.profile.bio;
+           $(".printInfo").append("<p>" + bio + "</p>");
+           let pic = index.profile.image_url;
+           $(".printInfo").append("<img src='" + pic + "'>");
+           break;
+         }
+       }
+     });
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     })
