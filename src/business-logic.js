@@ -2,7 +2,7 @@ export class apiCall {
   runDoctor() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let api_key = ""
+      const apiKey = "process.env.exports.apiKey"
       let url = "";
       request.onload = function() {
         if (this.status === 200) {
