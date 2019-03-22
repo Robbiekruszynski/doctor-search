@@ -4,7 +4,7 @@ import 'bootstrap/scss/bootstrap.scss';
 import './sass/styles.scss';
 import { grabApi } from "../src/api.js";
 
-$(document).ready(function() {
+$(document).ready(function(check) {
   $(".callDoctor").click(function() {
     $(".printInfo").empty(); //new
     const newApi = new grabApi();
@@ -15,13 +15,11 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       const body = JSON.parse(response);
-      // const newObject = body.data;
       console.log(body);
-      const enter = $("#issue").val();
       body.data.forEach(function(index){
         for (let i = 0; i < index.specialties.length; i++) {
           const checkInfo = [index.specialties[i].description, index.profile.last_name];
-         if (checkInfo[input].match(enter)) {
+         if (checkInfo[check].match(input)) {
            docs = true;
            const firstName = index.profile.first_name;
            $(".printInfo").append("<p> First Name: " + firstName + "</p>");
