@@ -41,8 +41,8 @@ $(document).ready(function() {
            const newAdd = index.practices[0].visit_address.street;
            $(".printInfo").append("<p> Street address: " + newAdd + " Portland, Or</p>");
 
-           const newWeb = index.practices[0].website;
-            $(".printInfo").append("<p> website: " + newWeb + "</p>");
+            const showSite = index.practices[0].website ? ` or at <a href=' ${index.practices[0].website}'>their website</a>` : ``;
+            // $(".printInfo").append("<p> website: " + newWeb + "</p>");
 
            break;
 
