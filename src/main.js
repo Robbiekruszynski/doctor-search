@@ -8,13 +8,13 @@ $(document).ready(function() {
   $(".callDoctor").click(function() {
     let newApi = new grabApi();
     let promise = newApi.runDoctor();
+    let input = $("#issue").val();
+    let nameInput = $("#name").val();
 
     promise.then(function(response) {
       let body = JSON.parse(response);
       const newObject = body.data;
       console.log(body);
-      let input = $("#issue").val();
-      let nameInput = $("#name").val();
       body.data.forEach(function(index){
         for (let i = 0; i < index.specialties.length; i++) {
          if (index.specialties[i].description.match(input)) {
