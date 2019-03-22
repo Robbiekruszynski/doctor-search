@@ -1,8 +1,9 @@
 export class apiCall {
-  runGithub() {
+  runDoctor() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = "https://api.github.com/users/Doriswarren/repos";
+      let api_key = ""
+      let url = "";
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);

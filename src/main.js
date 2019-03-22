@@ -7,7 +7,7 @@ import { apiCall } from "./../src/business-logic.js";
 $(document).ready(function() {
   $(".callApi").click(function() {
     let freshApi = new apiCall();
-    let promise = freshApi.runGithub();
+    let promise = freshApi.runDoctor();
 
     promise.then(function(response) {
       let body = JSON.parse(response);
