@@ -17,9 +17,11 @@ $(document).ready(function() {
       const body = JSON.parse(response);
       // const newObject = body.data;
       console.log(body);
+      const enter = $("#issue").val();
       body.data.forEach(function(index){
         for (let i = 0; i < index.specialties.length; i++) {
-         if (index.specialties[i].description, index.profile.match(input)) {
+          const checkInfo = [index.specialties[i].description, index.profile.last_name];
+         if (checkInfo[input].match(enter)) {
            docs = true;
            const firstName = index.profile.first_name;
            $(".printInfo").append("<p> First Name: " + firstName + "</p>");
@@ -38,6 +40,8 @@ $(document).ready(function() {
 
            const visit = index.practices[0];
            const profile = index.profile;
+
+           const viewWebsite = visit.website ? `<a href=' ${visit.website}'>website</a>` : ``;
 
            const newPatients = visit.accepts_new_patients ? "" : "not ";
            $(".printInfo").append(`<p>Dr. ${profile.last_name} is ${newPatients} available to see new patients accepted.</p>`);
