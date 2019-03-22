@@ -70,6 +70,8 @@ $(document).ready(function() {
           $(".printInfo").append("<img src='" + pic + "'>");
         }
       })
+    }, function(error) {
+      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
   });
 });
