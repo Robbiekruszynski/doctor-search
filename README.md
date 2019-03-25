@@ -32,6 +32,12 @@ https://github.com/Robbiekruszynski/doctor-search
 * Once in your terminal and proper directory run the command
 * `npm install` to install dependencies
 * `npm run start` to build and start the dev server
+* The application will open in a new window
+* Go to the directory of the application and add (touch) an .env file
+* Navigate to the .env file and add `exports.apiKey = [API KEY HERE]`
+* If you  don't already have an API key visit https://developer.betterdoctor.com/ to aquire one.
+* Once you have the API key in the .env file reload the project i.e. `npm run start`
+* The application will function now that a key is connected.
 
 
 
